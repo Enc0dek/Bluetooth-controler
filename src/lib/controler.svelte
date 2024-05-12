@@ -35,22 +35,34 @@
     {/if}
   </div>
 
-  <div class="buttons">
-    <Button size="lg" class="Down__Button"><ArrowDownOutline /></Button>
-    <Button size="lg" class="Up__Button"><ArrowUpOutline /></Button>
-    <Button size="lg" class="Left__Button"><ArrowLeftOutline /></Button>
-    <Button size="lg" class="Right__Button"><ArrowRightOutline /></Button>
+  <div
+    class="grid justify-items-center gap-2 items-center"
+    style="grid-template-columns: 0px 130px 0px; margin: 0 auto;"
+  >
+    <div class="up__btn">
+      <Button class="w-16 h-16"><ArrowUpOutline /></Button>
+    </div>
+    <div class="left__btn">
+      <Button class="w-16 h-16"><ArrowLeftOutline /></Button>
+    </div>
+
+    <div class="right__btn">
+      <Button class="w-16 h-16"><ArrowRightOutline /></Button>
+    </div>
+
+    <div class="down__btn">
+      <Button class="w-16 h-16"><ArrowDownOutline /></Button>
+    </div>
   </div>
 </div>
 
 <style>
-  .wrapper{
+  .wrapper {
     display: grid;
     gap: 10px;
-    
   }
 
-  .Status {   
+  .Status {
     display: flex;
     grid-column: 1;
     grid-row: 1;
@@ -58,12 +70,18 @@
     align-items: center;
   }
 
-  .buttons{
-    display: flex;
-    grid-column: 1;
-    grid-row: 2;
-    justify-content: center;
-    align-items: center;
+  .up__btn {
+    grid-column: 2;
   }
 
+  .left__btn {
+    grid-column: 1;
+  }
+
+  .right__btn {
+    grid-column: 3;
+  }
+  .down__btn {
+    grid-column: 2;
+  }
 </style>
