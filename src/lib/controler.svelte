@@ -1,5 +1,6 @@
 <script>
   import { Button, Card } from "flowbite-svelte";
+
   import {
     ArrowLeftOutline,
     ArrowRightOutline,
@@ -15,6 +16,39 @@
     Left: false,
     Right: false,
   };
+
+  function send_packet(info) {
+    console.log(info);
+  }
+
+  window.addEventListener("keydown", (e) => {
+    keyboard_handle(e);
+  });
+
+  function keyboard_handle(e) {
+    // up = 38
+    // down = 40a
+    // right = 39
+    // left = 37
+
+    switch (e.keyCode) {
+      case 38:
+        send_packet("fordward");
+        break;
+
+      case 39:
+        send_packet("right");
+        break;
+
+      case 37:
+        send_packet("left");
+        break;
+
+      case 40:
+        send_packet("down");
+        break;
+    }
+  }
 </script>
 
 <div class="wrapper">
@@ -37,22 +71,32 @@
 
   <div
     class="grid justify-items-center gap-2 items-center"
-    style="grid-template-columns: 0px 130px 0px; margin: 0 auto;"
+    style="grid-template-columns: 0px 130px 0px; margin: 0 auto; "
   >
-    <div class="up__btn">
-      <Button class="w-16 h-16"><ArrowUpOutline /></Button>
-    </div>
-    <div class="left__btn">
-      <Button class="w-16 h-16"><ArrowLeftOutline /></Button>
-    </div>
+    {#if connected}
+      <div class="up__btn">
+        <Button class="w-16 h-16" on:click={() => send_packet("fordward")}
+          ><ArrowUpOutline />
+        </Button>
+      </div>
+      <div class="left__btn">
+        <Button class="w-16 h-16" on:click={() => send_packet("left")}
+          ><ArrowLeftOutline /></Button
+        >
+      </div>
 
-    <div class="right__btn">
-      <Button class="w-16 h-16"><ArrowRightOutline /></Button>
-    </div>
+      <div class="right__btn">
+        <Button class="w-16 h-16" on:click={() => send_packet("right")}
+          ><ArrowRightOutline /></Button
+        >
+      </div>
 
-    <div class="down__btn">
-      <Button class="w-16 h-16"><ArrowDownOutline /></Button>
-    </div>
+      <div class="down__btn">
+        <Button class="w-16 h-16" on:click={() => send_packet("down")}
+          ><ArrowDownOutline /></Button
+        >
+      </div>
+    {/if}
   </div>
 </div>
 
